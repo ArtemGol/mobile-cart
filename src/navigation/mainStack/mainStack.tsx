@@ -7,7 +7,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {colors} from '../../../assets/colors/colors';
 import {useSelector} from 'react-redux';
 import {productsSelector} from '../../store/cart/cartSelector';
-import {Text, View} from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
@@ -48,7 +47,7 @@ const MainStack = () => {
         options={{
           headerTitleAlign: 'center',
           headerTitle: `Total: $${products.reduce(
-            (el, acc) => acc.price + el,
+            (el, acc) => acc.price * acc.count + el,
             0,
           )}`,
           tabBarLabel: 'Cart',

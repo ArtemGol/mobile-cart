@@ -11,8 +11,8 @@ interface IProps {
   navigation: BottomTabNavigationProp<RootStackParamList, 'Shop'>;
 }
 
-const ShopScreen: FC<IProps> = ({navigation}) => {
-  const {data, error, isLoading} = useGetAllProductsQuery('');
+const ShopScreen: FC<IProps> = () => {
+  const {data, isLoading} = useGetAllProductsQuery('');
   console.log(data?.[0].images);
 
   return (
@@ -24,7 +24,6 @@ const ShopScreen: FC<IProps> = ({navigation}) => {
       ) : (
         data?.map(product => <Product key={product.id} item={product} />)
       )}
-      <Text>screen shop</Text>
     </ScrollView>
   );
 };

@@ -8,7 +8,7 @@ interface IProps {
   navigation: BottomTabNavigationProp<RootStackParamList, 'Profile'>;
 }
 
-const ProfileScreen: FC<IProps> = ({navigation}) => {
+const ProfileScreen: FC<IProps> = () => {
   return (
     <View style={styles.container}>
       <Text>profile screen</Text>
