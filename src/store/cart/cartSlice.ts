@@ -16,11 +16,11 @@ export const {actions: cartAction, reducer: cartReducer} = createSlice({
           el.id === payload.id ? {...el, count: el.count + 1} : el,
         );
       } else {
-        state.products = [...state.products, {...payload, count: 1}];
+        state.products.push({...payload, count: 1});
       }
     },
     removeProduct: (state, {payload}: PayloadAction<number>) => {
-      if (state.products.some(el => el.count > 1)) {
+      if (state.products.some(el => el.id === payload && el.count > 1)) {
         state.products = state.products.map(el =>
           el.id === payload ? {...el, count: el.count - 1} : el,
         );

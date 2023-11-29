@@ -22,7 +22,7 @@ export const CartProduct = ({item}: IProps) => {
   };
 
   return (
-    <View style={styles.container} key={item.id}>
+    <View style={styles.container}>
       <View style={styles.imgTextBlock}>
         <CustomImage
           src={item.images[0]}

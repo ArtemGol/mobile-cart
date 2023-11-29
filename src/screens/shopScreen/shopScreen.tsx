@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {StyleSheet, Text, ScrollView} from 'react-native';
+import {StyleSheet, ScrollView} from 'react-native';
 import {BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
 import {colors} from '../../../assets/colors/colors';
 import {RootStackParamList} from '../../../assets/common/interfaces/rootBottomTabsTypes';
@@ -13,7 +13,6 @@ interface IProps {
 
 const ShopScreen: FC<IProps> = () => {
   const {data, isLoading} = useGetAllProductsQuery('');
-  console.log(data?.[0].images);
 
   return (
     <ScrollView
@@ -34,6 +33,7 @@ const styles = StyleSheet.create({
   contentContainer: {
     alignItems: 'center',
     paddingTop: 10,
+    paddingBottom: 20,
   },
   container: {
     padding: 24,
