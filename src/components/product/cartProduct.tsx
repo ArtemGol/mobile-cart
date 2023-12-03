@@ -1,6 +1,6 @@
 import React from 'react';
 import {CustomImage} from '../customImage/customImage';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Platform, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {colors} from '../../../assets/colors/colors';
 import {useDispatch} from 'react-redux';
 import {cartAction} from '../../store/cart/cartSlice';
@@ -23,17 +23,12 @@ export const CartProduct = ({item}: IProps) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.imgTextBlock}>
-        <CustomImage
-          src={item.images[0]}
-          sizesStyles={{width: 50, height: 50}}
-        />
-        <View style={styles.productData}>
-          <Text style={styles.productTitle} numberOfLines={1}>
-            {item.title}
-          </Text>
-          <Text style={styles.productPrice}>${item.price}</Text>
-        </View>
+      <CustomImage src={item.images[0]} uniqStyles={{width: 50, height: 50}} />
+      <View style={styles.productData}>
+        <Text style={styles.productTitle} numberOfLines={2}>
+          {item.title}
+        </Text>
+        <Text style={styles.productPrice}>${item.price}</Text>
       </View>
       <View style={styles.countBlock}>
         <TouchableOpacity
@@ -58,45 +53,45 @@ export const CartProduct = ({item}: IProps) => {
 
 const styles = StyleSheet.create({
   container: {
+    height: 114,
     marginBottom: 16,
     paddingVertical: 32,
     paddingHorizontal: 24,
     borderRadius: 20,
     flexDirection: 'row',
     overflow: 'hidden',
-    shadowColor: 'black',
-    shadowOpacity: 0.26,
-    shadowOffset: {width: 0, height: 2},
-    shadowRadius: 10,
-    elevation: 3,
     backgroundColor: 'white',
-    width: '98%',
     alignItems: 'center',
     justifyContent: 'space-between',
-  },
-  productImage: {
-    marginRight: 32,
-    width: 100,
-    height: 100,
+    ...Platform.select({
+      ios: {
+        shadowColor: '#000000',
+        shadowOffset: {width: 0, height: 8},
+        shadowOpacity: 0.1,
+        shadowRadius: 8,
+      },
+      android: {
+        elevation: 8,
+      },
+    }),
   },
   productData: {
     flexDirection: 'column',
     justifyContent: 'space-between',
-  },
-  imgTextBlock: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    width: 100,
+    marginHorizontal: 16,
   },
   productTitle: {
+    fontFamily: 'SF-Medium',
     fontSize: 14,
     fontWeight: 'bold',
     color: colors.black,
     marginBottom: 8,
-    maxWidth: 130,
   },
   productPrice: {
+    fontFamily: 'SF-Regular',
     fontSize: 12,
-    color: colors.black,
+    color: colors.gray,
   },
   countBlock: {
     flexDirection: 'row',
@@ -105,12 +100,14 @@ const styles = StyleSheet.create({
   countItem: {
     width: 31,
     height: 31,
+    borderRadius: 4,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.lightGray,
     marginRight: 4,
   },
   countText: {
+    fontFamily: 'SF-Regular',
     color: colors.blue,
   },
 });

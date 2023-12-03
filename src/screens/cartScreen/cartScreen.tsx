@@ -1,23 +1,20 @@
 import React, {FC} from 'react';
-import {
-  View,
-  StyleSheet,
-  Text,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity, FlatList} from 'react-native';
 import {BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
 import {colors} from '../../../assets/colors/colors';
 import {RootStackParamList} from '../../../assets/common/interfaces/rootBottomTabsTypes';
 import {useSelector} from 'react-redux';
 import {productsSelector} from '../../store/cart/cartSelector';
 import {CartProduct} from '../../components/product/cartProduct';
+import {NoDataComponent} from '../../components/noDataComponent/noDataComponent';
+import {useTranslation} from 'react-i18next';
 
 interface IProps {
   navigation: BottomTabNavigationProp<RootStackParamList, 'Cart'>;
 }
 
 const CartScreen: FC<IProps> = ({navigation}) => {
+  const {t} = useTranslation();
   const products = useSelector(productsSelector);
 
   const handleNavigation = () => {
@@ -25,23 +22,24 @@ const CartScreen: FC<IProps> = ({navigation}) => {
   };
 
   return (
-    <View style={styles.main}>
-      <ScrollView
-        contentContainerStyle={styles.contentContainer}
-        style={styles.container}>
-        {!products.length ? (
-          <View style={styles.empty}>
-            <Text>cart is empty</Text>
-          </View>
-        ) : (
-          products.map(el => <CartProduct key={el.id} item={el} />)
+    <View style={styles.container}>
+      <FlatList
+        data={products}
+        contentContainerStyle={styles.contentListBlock}
+        style={styles.contentInsideListBlock}
+        renderItem={({item}) => <CartProduct key={item.id} item={item} />}
+        keyExtractor={item => `${item.id}`}
+        ListEmptyComponent={() => (
+          <NoDataComponent pathToText="cartScreen.noData" />
         )}
-      </ScrollView>
+        onEndReachedThreshold={0.7}
+        removeClippedSubviews
+      />
       <TouchableOpacity
         onPress={handleNavigation}
         activeOpacity={0.7}
         style={styles.bottomBtnBlock}>
-        <Text style={styles.btnText}>Go to checkout</Text>
+        <Text style={styles.btnText}>{t('cartScreen.button')}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -50,34 +48,27 @@ const CartScreen: FC<IProps> = ({navigation}) => {
 export default CartScreen;
 
 const styles = StyleSheet.create({
-  main: {
-    backgroundColor: colors.white,
-    width: '100%',
-    height: '100%',
-    alignItems: 'center',
-  },
-  contentContainer: {
-    paddingTop: 10,
-    paddingBottom: 80,
-    alignItems: 'center',
-  },
   container: {
+    alignItems: 'center',
     flex: 1,
-    backgroundColor: colors.white,
-    padding: 24,
+  },
+  contentListBlock: {
+    paddingTop: 10,
+    paddingBottom: 70,
+    alignItems: 'center',
+    width: '100%',
+    minHeight: '100%',
+  },
+  contentInsideListBlock: {
+    flex: 1,
     width: '100%',
     height: '100%',
-  },
-  empty: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: '100%',
   },
   bottomBtnBlock: {
     backgroundColor: colors.blue,
     position: 'absolute',
-    bottom: 10,
-    width: '90%',
+    bottom: 16,
+    width: '88%',
     alignItems: 'center',
     justifyContent: 'center',
     height: 50,

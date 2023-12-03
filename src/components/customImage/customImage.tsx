@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import {Image, StyleSheet} from 'react-native';
+import {Image} from 'react-native';
 
 interface IProps {
   src: string;
-  sizesStyles: Record<'width' | 'height', number>;
+  uniqStyles: Record<string, number>;
 }
 
-export const CustomImage = ({src, sizesStyles}: IProps) => {
+export const CustomImage = ({src, uniqStyles}: IProps) => {
   const [imageError, setImageError] = useState(false);
 
   const handleError = () => {
@@ -15,17 +15,13 @@ export const CustomImage = ({src, sizesStyles}: IProps) => {
 
   return (
     <Image
-      style={[styles.container, sizesStyles]}
+      style={uniqStyles}
       source={
-        imageError ? require('../../../assets/plugs/noImage.png') : {uri: src}
+        imageError || !src.includes('http')
+          ? require('../../../assets/plugs/noImage.png')
+          : {uri: src}
       }
       onError={handleError}
     />
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    marginRight: 32,
-  },
-});

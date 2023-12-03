@@ -14,6 +14,8 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-buyCart-buyCartTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-buyCart-buyCartTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		64BF7FAF4F6F4AD79F81AF36 /* SF-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 20D0940D66734982A02EFE88 /* SF-Medium.otf */; };
+		ACD72EAAEB81407F99D78F78 /* SF-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 64E68CD57B2643B2A9BDC604 /* SF-Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = buyCart/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-buyCart-buyCartTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-buyCart-buyCartTests.release.xcconfig"; path = "Target Support Files/Pods-buyCart-buyCartTests/Pods-buyCart-buyCartTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		20D0940D66734982A02EFE88 /* SF-Medium.otf */ = {isa = PBXFileReference; name = "SF-Medium.otf"; path = "../assets/fonts/SF-Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		64E68CD57B2643B2A9BDC604 /* SF-Regular.otf */ = {isa = PBXFileReference; name = "SF-Regular.otf"; path = "../assets/fonts/SF-Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				6DE199E9A6D24F1F8E3A0B11 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -147,6 +152,16 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		6DE199E9A6D24F1F8E3A0B11 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				20D0940D66734982A02EFE88 /* SF-Medium.otf */,
+				64E68CD57B2643B2A9BDC604 /* SF-Regular.otf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -244,6 +259,8 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				64BF7FAF4F6F4AD79F81AF36 /* SF-Medium.otf in Resources */,
+				ACD72EAAEB81407F99D78F78 /* SF-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,11 +11,12 @@ import {StatusBar} from 'react-native';
 
 import Navigation from './src/navigation';
 import {Provider} from 'react-redux';
+import {colors} from './assets/colors/colors';
 
 const App = () => {
   return (
     <Provider store={store}>
-      <StatusBar backgroundColor="#000" />
+      <StatusBar backgroundColor={colors.black} />
       <Navigation />
     </Provider>
   );
