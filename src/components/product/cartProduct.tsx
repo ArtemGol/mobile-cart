@@ -23,7 +23,7 @@ export const CartProduct = ({item}: IProps) => {
 
   return (
     <View style={styles.container}>
-      <CustomImage src={item.images[0]} uniqStyles={{width: 50, height: 50}} />
+      <CustomImage src={item.images[0]} uniqStyles={styles.img} />
       <View style={styles.productData}>
         <Text style={styles.productTitle} numberOfLines={2}>
           {item.title}
@@ -109,5 +109,9 @@ const styles = StyleSheet.create({
   countText: {
     fontFamily: 'SF-Regular',
     color: colors.blue,
+  },
+  img: {
+    width: 50,
+    height: 50,
   },
 });

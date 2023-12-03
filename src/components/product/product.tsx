@@ -26,10 +26,7 @@ export const Product = ({item}: IProps) => {
       activeOpacity={0.7}
       style={styles.container}
       key={item.id}>
-      <CustomImage
-        src={item.images[0]}
-        uniqStyles={{width: 100, height: 100}}
-      />
+      <CustomImage src={item.images[0]} uniqStyles={styles.img} />
       <View style={styles.productData}>
         <Text style={styles.productTitle}>{item.title}</Text>
         <Text style={styles.productDescription} numberOfLines={2}>
@@ -102,5 +99,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: colors.black,
     fontFamily: 'SF-Regular',
+  },
+  img: {
+    width: 100,
+    height: 100,
   },
 });
