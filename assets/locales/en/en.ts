@@ -1,9 +1,10 @@
 export const en = {
   loginScreen: {
     email: 'Email',
-    password: 'password',
+    password: 'Password',
     button: 'Login',
     validation: {
+      required: '{{field}} can not be empty',
       mail: 'Please enter a valid email address',
       max: 'Exceeded {{max}} characters',
       min: 'Length less than {{min}} characters',

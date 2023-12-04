@@ -8,6 +8,11 @@ export const isLoadingSelector = createSelector(
   ({isLoading}) => isLoading,
 );
 
+export const isInitializeSelector = createSelector(
+  state,
+  ({initialLoad}) => initialLoad,
+);
+
 export const accessTokenSelector = createSelector(
   state,
   ({authInfo}) => authInfo.access_token,

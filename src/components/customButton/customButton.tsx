@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.blue,
     padding: 20,
     borderRadius: 10,
-    marginBottom: 30,
   },
   text: {
     fontFamily: 'SF-Regular',

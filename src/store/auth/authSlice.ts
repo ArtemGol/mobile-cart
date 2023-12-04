@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import type {IAuthState} from '../../api/dto/IAuth';
 import {authApi} from '../../api/authApi';
 import {IAuthInfo} from '../../api/dto/IAuth';
+import {Alert} from 'react-native';
 
 const initialUserInfo = {
   id: 0,
@@ -21,7 +22,8 @@ const initialAuthInfo = {
 const authInitialState: IAuthState = {
   userInfo: initialUserInfo,
   authInfo: initialAuthInfo,
-  isLoading: true,
+  isLoading: false,
+  initialLoad: true,
   value: 0,
 };
 
@@ -35,8 +37,10 @@ export const {actions: authAction, reducer: authReducer} = createSlice({
       AsyncStorage.removeItem('tokens');
     },
     setToken: (state, {payload}: PayloadAction<IAuthInfo>) => {
-      console.log(payload);
       state.authInfo = payload;
+    },
+    setInitialize: (state, {payload}: PayloadAction<boolean>) => {
+      state.initialLoad = payload;
     },
     changeMainData: (
       state,
@@ -57,6 +61,9 @@ export const {actions: authAction, reducer: authReducer} = createSlice({
           AsyncStorage.setItem('tokens', JSON.stringify(payload));
         },
       )
+      .addMatcher(authApi.endpoints?.login.matchRejected, () => {
+        Alert.alert('Password or email are incorrect');
+      })
       .addMatcher(authApi.endpoints?.getUser.matchPending, state => {
         state.isLoading = true;
       })

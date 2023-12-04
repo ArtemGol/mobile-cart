@@ -12,7 +12,9 @@ interface IValidProps {
 
 const validationRules: Record<string, Function> = {
   required: ({value, fieldName}: IValidProps) =>
-    value.trim() !== '' ? '' : `${fieldName} can not be empty`,
+    value.trim() !== ''
+      ? ''
+      : i18n.t('loginScreen.validation.required', {field: fieldName}),
   email: ({value}: IValidProps) => {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return value

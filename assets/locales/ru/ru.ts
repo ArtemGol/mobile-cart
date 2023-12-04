@@ -6,6 +6,7 @@ export const ru: typeof en = {
     password: 'Пароль',
     button: 'Авторизация',
     validation: {
+      required: '{{field}} не может быть пустым',
       mail: 'Пожалуйста введите валидный емейл',
       max: 'Ваш код должен быть меньше {{max}}',
       min: 'Ваш код должен быть минимум {{min}}',

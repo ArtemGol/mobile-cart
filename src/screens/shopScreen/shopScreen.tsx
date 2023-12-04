@@ -12,12 +12,12 @@ interface IProps {
 }
 
 const ShopScreen: FC<IProps> = () => {
-  const [page, setPage] = useState<number>(1);
+  const [page, setPage] = useState<number>(0);
   const {data, isLoading} = useGetAllProductsQuery(page);
 
   const loadMoreItems = () => {
     //Обновление страницы нужно останавливать, когда пагинация закончилась
-    setPage(prevState => prevState + 1);
+    !isLoading && setPage(prevState => prevState + 1);
   };
 
   const emptyComponent = () =>

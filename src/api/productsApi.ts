@@ -8,7 +8,7 @@ export const productsApi = createApi({
   baseQuery: fetchBaseQuery({baseUrl: BASEURL}),
   endpoints: builder => ({
     getAllProducts: builder.query<IProduct[], number>({
-      query: (page = 1) => `products?limit=${LIMIT}&offset=${page * LIMIT}`,
+      query: page => `products?limit=${LIMIT}&offset=${page * LIMIT}`,
       serializeQueryArgs: ({endpointName}) => {
         return endpointName;
       },

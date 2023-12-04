@@ -1,5 +1,5 @@
 import React, {FC, useState} from 'react';
-import {ScrollView, StyleSheet} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import InputField from '../../components/inputField/inputField';
 import {validationFunk} from '../../../assets/constants/validationFunk';
@@ -7,6 +7,10 @@ import CustomButton from '../../components/customButton/customButton';
 import {RootStackAuthTypes} from '../../../assets/common/interfaces/rootStackAuthTypes';
 import {useGetUserMutation, useLoginMutation} from '../../api/authApi';
 import {useTranslation} from 'react-i18next';
+import {useSelector} from 'react-redux';
+import {isLoadingSelector} from '../../store/auth/authSelector';
+import {Loader} from '../../components/loader/loader';
+import {colors} from '../../../assets/colors/colors';
 
 interface IProps {
   navigation: NativeStackNavigationProp<RootStackAuthTypes, 'Login'>;
@@ -20,16 +24,17 @@ const LoginScreen: FC<IProps> = () => {
   const [emailError, setEmailError] = useState('');
   const [password, setPassword] = useState('changeme');
   const [pasError, setPasError] = useState('');
+  const loading = useSelector(isLoadingSelector);
 
   const onHandleLogin = () => {
     const emailVal = validationFunk({
-      fieldName: 'Email',
+      fieldName: t('loginScreen.email'),
       value: email,
       errors: ['required', 'email'],
     });
 
     const pasVal = validationFunk({
-      fieldName: 'Password',
+      fieldName: t('loginScreen.password'),
       value: password,
       min: 6,
       errors: ['required', 'minLength'],
@@ -70,7 +75,13 @@ const LoginScreen: FC<IProps> = () => {
         }}
         fieldButtonFunction={() => {}}
       />
-      <CustomButton label={t('loginScreen.button')} onPress={onHandleLogin} />
+      {!loading ? (
+        <CustomButton label={t('loginScreen.button')} onPress={onHandleLogin} />
+      ) : (
+        <View style={styles.loaderBlock}>
+          <Loader />
+        </View>
+      )}
     </ScrollView>
   );
 };
@@ -81,6 +92,13 @@ const styles = StyleSheet.create({
   container: {
     padding: 24,
     minHeight: '100%',
+    justifyContent: 'center',
+  },
+  loaderBlock: {
+    backgroundColor: colors.blue,
+    height: 60,
+    borderRadius: 8,
+    alignItems: 'center',
     justifyContent: 'center',
   },
 });
