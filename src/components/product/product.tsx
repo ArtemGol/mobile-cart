@@ -34,7 +34,7 @@ export const Product = ({item}: IProps) => {
         </Text>
         <Text style={styles.productDate} numberOfLines={1}>
           {dayJSGlobalFunk(item.creationAt, i18n.language).format(
-            'DD MMMM, YY',
+            'DD MMMM, YY, HH:mm',
           )}
         </Text>
         <Text style={styles.productPrice}>${item.price}</Text>
