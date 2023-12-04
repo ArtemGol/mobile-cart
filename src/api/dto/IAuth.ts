@@ -16,7 +16,6 @@ export interface IAuthState {
   userInfo: IUserInfo;
   authInfo: IAuthInfo;
   isLoading: boolean;
-  initialLoad: boolean;
   value: number;
 }
 

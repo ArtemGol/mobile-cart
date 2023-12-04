@@ -1,5 +1,5 @@
 import React, {FC, useState} from 'react';
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import InputField from '../../components/inputField/inputField';
 import {validationFunk} from '../../../assets/constants/validationFunk';
@@ -7,9 +7,6 @@ import CustomButton from '../../components/customButton/customButton';
 import {RootStackAuthTypes} from '../../../assets/common/interfaces/rootStackAuthTypes';
 import {useGetUserMutation, useLoginMutation} from '../../api/authApi';
 import {useTranslation} from 'react-i18next';
-import {useSelector} from 'react-redux';
-import {isLoadingSelector} from '../../store/auth/authSelector';
-import {Loader} from '../../components/loader/loader';
 import {colors} from '../../../assets/colors/colors';
 
 interface IProps {
@@ -24,7 +21,6 @@ const LoginScreen: FC<IProps> = () => {
   const [emailError, setEmailError] = useState('');
   const [password, setPassword] = useState('changeme');
   const [pasError, setPasError] = useState('');
-  const loading = useSelector(isLoadingSelector);
 
   const onHandleLogin = () => {
     const emailVal = validationFunk({
@@ -75,13 +71,7 @@ const LoginScreen: FC<IProps> = () => {
         }}
         fieldButtonFunction={() => {}}
       />
-      {!loading ? (
-        <CustomButton label={t('loginScreen.button')} onPress={onHandleLogin} />
-      ) : (
-        <View style={styles.loaderBlock}>
-          <Loader />
-        </View>
-      )}
+      <CustomButton label={t('loginScreen.button')} onPress={onHandleLogin} />
     </ScrollView>
   );
 };

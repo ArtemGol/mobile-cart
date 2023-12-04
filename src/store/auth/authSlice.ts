@@ -22,8 +22,7 @@ const initialAuthInfo = {
 const authInitialState: IAuthState = {
   userInfo: initialUserInfo,
   authInfo: initialAuthInfo,
-  isLoading: false,
-  initialLoad: true,
+  isLoading: true,
   value: 0,
 };
 
@@ -38,9 +37,6 @@ export const {actions: authAction, reducer: authReducer} = createSlice({
     },
     setToken: (state, {payload}: PayloadAction<IAuthInfo>) => {
       state.authInfo = payload;
-    },
-    setInitialize: (state, {payload}: PayloadAction<boolean>) => {
-      state.initialLoad = payload;
     },
     changeMainData: (
       state,

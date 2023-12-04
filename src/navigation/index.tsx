@@ -6,11 +6,11 @@ import {getToken} from '../../assets/constants/tokensFunks';
 import {authAction} from '../store/auth/authSlice';
 import {authApi} from '../api/authApi';
 import {useSelector} from 'react-redux';
-import {isInitializeSelector} from '../store/auth/authSelector';
+import {isLoadingSelector} from '../store/auth/authSelector';
 import {LoaderScreen} from '../components/loader/loaderScreen';
 
 const Navigation = () => {
-  const loading = useSelector(isInitializeSelector);
+  const loading = useSelector(isLoadingSelector);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -22,7 +22,6 @@ const Navigation = () => {
       })
       .finally(() => {
         dispatch(authApi.endpoints?.getUser.initiate());
-        dispatch(authAction.setInitialize(false));
       });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
