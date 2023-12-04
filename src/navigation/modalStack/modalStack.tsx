@@ -17,7 +17,6 @@ const ModalStack = () => {
           fontFamily: 'SF-Medium',
         },
         headerTitleAlign: 'center',
-        headerLeft: () => <Menu />,
       })}
       initialRouteName="MainHome">
       <RootStack.Group>
@@ -29,6 +28,7 @@ const ModalStack = () => {
             headerTitleStyle: {
               fontFamily: 'SF-Medium',
             },
+            headerLeft: () => <Menu />,
           }}
         />
       </RootStack.Group>
