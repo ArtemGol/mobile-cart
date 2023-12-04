@@ -29,8 +29,8 @@ const MainStack = () => {
         headerTitleAlign: 'center',
         headerLeft: () => <Menu />,
         headerLeftContainerStyle: {
-          marginLeft: 24,
-          marginRight: -24,
+          marginLeft: 16,
+          marginRight: -16,
         },
       })}>
       <Tab.Screen

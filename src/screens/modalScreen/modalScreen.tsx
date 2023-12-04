@@ -38,7 +38,7 @@ const ModalScreen: FC<IProps> = ({navigation}) => {
         value={value}
       />
       <CustomButton
-        label={`Change ${t(
+        label={`${t('modalScreen.change')} ${t(
           `profileScreen.userDataTitles.${
             getFromNavigationFunk(navigation)?.title
           }`,

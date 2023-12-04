@@ -43,4 +43,7 @@ export const ru: typeof en = {
     noData: 'корзина пуста',
     button: 'Оформить заказ',
   },
+  modalScreen: {
+    change: 'Сменить',
+  },
 };

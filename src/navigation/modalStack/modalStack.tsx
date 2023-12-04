@@ -2,7 +2,6 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ProfileScreen from '../../screens/profileScreen/profileScreen';
 import ModalScreen from '../../screens/modalScreen/modalScreen';
-import {colors} from '../../../assets/colors/colors';
 import {Menu} from '../../components/header/menu/menu';
 import {useTranslation} from 'react-i18next';
 import {getFromNavigationFunk} from '../../../assets/constants/getFromNavigationFunk';
@@ -14,15 +13,11 @@ const ModalStack = () => {
   return (
     <RootStack.Navigator
       screenOptions={() => ({
-        tabBarActiveTintColor: colors.blue,
         headerTitleStyle: {
           fontFamily: 'SF-Medium',
         },
         headerTitleAlign: 'center',
-        headerLeftContainerStyle: {
-          marginLeft: 24,
-          marginRight: -24,
-        },
+        headerLeft: () => <Menu />,
       })}
       initialRouteName="MainHome">
       <RootStack.Group>
@@ -34,8 +29,6 @@ const ModalStack = () => {
             headerTitleStyle: {
               fontFamily: 'SF-Medium',
             },
-            headerTitleAlign: 'center',
-            headerLeft: () => <Menu />,
           }}
         />
       </RootStack.Group>

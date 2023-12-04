@@ -41,4 +41,7 @@ export const en = {
     noData: 'cart is empty',
     button: 'Go to checkout',
   },
+  modalScreen: {
+    change: 'Change',
+  },
 };
